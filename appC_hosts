@@ -1,0 +1,9 @@
+[appC]
+hostC01  environment=prod
+hostC02  environment=test
+hostC03  environment=test
+
+[appC_test]
+hostC02
+hostC03
+

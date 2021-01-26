@@ -1,0 +1,9 @@
+---
+plugin: constructed
+keyed_groups:
+  # assign the value of hostvars.environment as host group
+  # TODO: take a list of group names to assign, waiting for https://github.com/ansible/ansible/issues/73332
+  - key: environment
+    prefix: ""
+    separator: ""
+

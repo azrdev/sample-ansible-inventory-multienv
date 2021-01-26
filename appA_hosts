@@ -1,0 +1,9 @@
+[appA]
+hostA01
+hostA02
+
+[test]
+hostA02
+
+[prod]
+hostA01
