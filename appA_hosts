@@ -1,9 +1,14 @@
-[appA]
-hostA01
+[appA:children]
+appA_test
+appA_prod
+
+[appA_test]
 hostA02
 
-[test]
-hostA02
-
-[prod]
+[appA_prod]
 hostA01
+
+[test:children]
+appA_test
+[prod:children]
+appA_prod

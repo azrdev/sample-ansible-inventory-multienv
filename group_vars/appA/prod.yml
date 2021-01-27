@@ -1,2 +1,2 @@
 # WARNING: applies to all appA hosts, not only those in appA,&prod
-appA_portal_url: "https://a.example.com/ (error: also in test)"
+appA_portal_url_wrong: "https://a.example.com/ (error: also in test)"

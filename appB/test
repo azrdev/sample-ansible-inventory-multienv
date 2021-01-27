@@ -1,2 +1,5 @@
-[test]
+[appB_test]
 hostB02
+
+[test:children]
+appB_test

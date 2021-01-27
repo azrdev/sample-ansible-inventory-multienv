@@ -1,3 +1,8 @@
-[appB]
-hostB01
-hostB02
+[appB:children]
+appB_test
+appB_prod
+
+# NOTE: need to define those here, else the whole file fails to load with
+# [WARNING]:  * Failed to parse appB/app02 with ini plugin: appB/app02:2: Section [appB:children] includes undefined group: appB_test
+[appB_test]
+[appB_prod]
