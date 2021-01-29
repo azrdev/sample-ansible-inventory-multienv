@@ -11,57 +11,94 @@ $ ansible-inventory -i . --list --yaml
 all:
   children:
     appA:
-      hosts:
-        hostA01:
-          appA_listen_port: 5001
-          appA_portal_url: 'https://a.example.com/ (error: also in test)'
-          company_domain: example.com
-          fqdn: hostA01.example.com
-          reposerver: repos.example.com
-        hostA02:
-          appA_listen_port: 5001
-          appA_portal_url: 'https://a.example.com/ (error: also in test)'
-          company_domain: example.com
-          fqdn: hostA02.example.com
-          reposerver: test.repos.example.com
+      children:
+        appA_prod:
+          hosts:
+            hostA01:
+              appA_listen_port: 5001
+              appA_portal_url_correct: https://a.example.com/
+              appA_portal_url_wrong: 'https://a.example.com/ (error: also in test)'
+              company_domain: example.com
+              fqdn: hostA01.example.com
+              reposerver: repos.example.com
+        appA_test:
+          hosts:
+            hostA02:
+              appA_listen_port: 5001
+              appA_portal_url_wrong: 'https://a.example.com/ (error: also in test)'
+              company_domain: example.com
+              fqdn: hostA02.example.com
+              reposerver: test.repos.example.com
     appB:
-      hosts:
-        hostB01:
-          company_domain: example.com
-          reposerver: repos.example.com
-        hostB02:
-          company_domain: example.com
-          reposerver: test.repos.example.com
+      children:
+        appB_prod:
+          hosts:
+            hostB01:
+              company_domain: example.com
+        appB_test:
+          hosts:
+            hostB02:
+              company_domain: example.com
+              reposerver: test.repos.example.com
     appC:
+      children:
+        appC_prod:
+          hosts:
+            hostC01:
+              company_domain: example.com
+              environment: prod
+              reposerver: repos.example.com
+        appC_test:
+          hosts:
+            hostC02:
+              company_domain: example.com
+              environment: test
+              reposerver: test.repos.example.com
+              verify_certificates: false
+            hostC03:
+              company_domain: example.com
+              environment: test
+              reposerver: test.repos.example.com
+              verify_certificates: false
+    appD:
       hosts:
-        hostC01:
+        hostD01:
           company_domain: example.com
-          environment: prod
+          environment:
+          - appD_prod
+          - prod
           reposerver: repos.example.com
-        hostC02:
+        hostD02:
           company_domain: example.com
-          environment: test
+          environment:
+          - appD_test
+          - test
           reposerver: test.repos.example.com
-          verify_certificates: false
-        hostC03:
-          company_domain: example.com
-          environment: test
-          reposerver: test.repos.example.com
-          verify_certificates: false
-    appC_test:
+    appD_prod:
       hosts:
-        hostC02: {}
-        hostC03: {}
+        hostD01: {}
+    appD_test:
+      hosts:
+        hostD02: {}
     prod:
+      children:
+        appA_prod:
+          hosts:
+            hostA01: {}
       hosts:
-        hostA01: {}
-        hostB01: {}
         hostC01: {}
+        hostD01: {}
     test:
+      children:
+        appA_test:
+          hosts:
+            hostA02: {}
+        appB_test:
+          hosts:
+            hostB02: {}
       hosts:
-        hostA02: {}
-        hostB02: {}
         hostC02: {}
         hostC03: {}
+        hostD02: {}
     ungrouped: {}
 ~~~
