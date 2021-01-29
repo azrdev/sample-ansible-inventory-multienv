@@ -1,0 +1,4 @@
+[appD]
+hostD01  environment='["appD_prod","prod"]'
+hostD02  environment='["appD_test","test"]'
+

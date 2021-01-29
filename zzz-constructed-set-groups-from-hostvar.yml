@@ -2,7 +2,9 @@
 plugin: constructed
 keyed_groups:
   # assign the value of hostvars.environment as host group
-  # TODO: take a list of group names to assign, waiting for https://github.com/ansible/ansible/issues/73332
+  # NOTE environment has to be set in inventory, not host_vars/group_vars,
+  # since these are loaded after the inventory, thus after this file
+  # see https://github.com/ansible/ansible/issues/44382
   - key: environment
     prefix: ""
     separator: ""
