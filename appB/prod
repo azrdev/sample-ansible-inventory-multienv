@@ -2,4 +2,4 @@
 hostB01
 
 [test:children]
-appB_prod
+appB_test
