@@ -1,0 +1,14 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: 'put hosts into prod/test groups based on hostvar "Umgebung"'
+      group_by:
+        key: "{{ Umgebung }}"
+      changed_when: false
+      when: '"Umgebung" in hostvars[ansible_host]'
+
+    - name: print all groups
+      run_once: true
+      debug:
+        var: groups

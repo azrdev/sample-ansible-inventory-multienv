@@ -81,6 +81,14 @@ all:
     appD_test:
       hosts:
         hostD02: {}
+    appE:
+      hosts:
+        hostE01:
+          Umgebung: test
+          company_domain: example.com
+        hostE02:
+          Umgebung: prod
+          company_domain: example.com
     prod:
       children:
         appA_prod:

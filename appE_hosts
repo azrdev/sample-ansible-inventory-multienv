@@ -1,0 +1,5 @@
+[appE]
+hostE01  Umgebung=test
+hostE02  Umgebung=prod
+
+# use hostvar "Umgebung" in playbook with `group_by` task
