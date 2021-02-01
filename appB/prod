@@ -1,5 +1,5 @@
 [appB_prod]
 hostB01
 
-[test:children]
-appB_test
+[prod:children]
+appB_prod

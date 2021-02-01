@@ -35,6 +35,7 @@ all:
           hosts:
             hostB01:
               company_domain: example.com
+              reposerver: repos.example.com
         appB_test:
           hosts:
             hostB02:
@@ -85,6 +86,9 @@ all:
         appA_prod:
           hosts:
             hostA01: {}
+        appB_prod:
+          hosts:
+            hostB01: {}
       hosts:
         hostC01: {}
         hostD01: {}
